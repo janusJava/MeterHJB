@@ -1,0 +1,16 @@
+version: '3'
+volumes:
+  postgres_meter:
+
+services:
+  db:
+    image: 'postgres:14.4'
+    container_name: db
+    environment:
+      POSTGRES_DB: meterhj
+      POSTGRES_USER: meterhj
+      POSTGRES_PASSWORD: meterhj
+    volumes:
+      - 'postgres_meter:/var/lib/postgresql/data'
+    ports:
+      - "5432:5432"
