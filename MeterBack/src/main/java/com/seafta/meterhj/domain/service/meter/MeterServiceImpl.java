@@ -38,7 +38,8 @@ public class MeterServiceImpl implements MeterService {
     private final AccountRepository accountRepository;
 
     @Override
-    public MeterSnapshot createMeter(@NotNull @Valid MeterCreateRequest request, @NotNull UUID accountId) {
+    public MeterSnapshot createMeter(@NotNull @Valid MeterCreateRequest request,
+                                     @NotNull UUID accountId) {
         log.info("Service: Creating meter {request: {}}", request);
         Account account = accountRepository.findById(accountId).get();
         MeterSnapshot result = mapper.toMeterSnapshot(meterRepository.save(Meter.buildMeter(request, account)));
@@ -67,7 +68,8 @@ public class MeterServiceImpl implements MeterService {
     @Override
     public List<MeterDetails> getMeters() {
         log.info("Service: Getting meters");
-        List<MeterDetails> result = meterRepository.findAll().stream().map(this::getMeterDetails).collect(Collectors.toList());
+        List<MeterDetails> result = meterRepository.findAll().stream().
+                map(this::getMeterDetails).collect(Collectors.toList());
         log.debug("Service: Got meters {result: {}}", result);
         return result;
     }

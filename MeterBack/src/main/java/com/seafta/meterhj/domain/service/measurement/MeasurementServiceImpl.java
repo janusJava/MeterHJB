@@ -48,7 +48,8 @@ public class MeasurementServiceImpl implements MeasurementService {
     @Override
     public List<MeasurementDetails> getMeasurements() {
         log.info("Service: Getting measurements");
-        List<MeasurementDetails> result = repository.findAll().stream().map(mapper::toMeasurementDetails).collect(Collectors.toList());
+        List<MeasurementDetails> result = repository.findAll().stream()
+                .map(mapper::toMeasurementDetails).collect(Collectors.toList());
         log.debug("Service: Got measurements {result: {}}", result);
         return result;
     }

@@ -56,7 +56,6 @@ public class AccountRole {
 
     public enum RoleType {
         USER,
-        COMPANY,
         ADMIN
     }
 

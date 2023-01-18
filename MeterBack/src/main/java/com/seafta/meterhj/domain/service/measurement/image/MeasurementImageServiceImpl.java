@@ -60,7 +60,6 @@ public class MeasurementImageServiceImpl implements MeasurementImageService {
         } else {
             address = getLocationInfoFromApi(longLat.get(0), longLat.get(1));
         }
-        //todo sprawdz czy dziala
         MeasurementDetails details = service.createMeasurement(meterId, readValueFromImage(file.getBytes()), address);
         Measurement measurement = measurementRepository.findById(details.getMeasurementId()).get();
         MeasurementImage image = repository.save(MeasurementImage.buildMeasurementImage(file, measurement));
